@@ -1,6 +1,9 @@
 # covid19
 analysis tools for coronavirus
 
-python 2.7
-install matplotlib
-run update script
+git clone https://github.com/gixxerrock/covid19.git
+
+python 3.7
+install plotly
+
+git clone https://github.com/CSSEGISandData/COVID-19.git
