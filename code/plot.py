@@ -1,36 +1,25 @@
-import plotly
-import plotly.graph_objs as go
+import plotly.io as pio
+import load_data
 
-# Create random data with numpy
-import numpy as np
 
-N = 100
-random_x = np.linspace(0, 1, N)
-random_y0 = np.random.randn(N)+5
-random_y1 = np.random.randn(N)
-random_y2 = np.random.randn(N)-5
+def DrawConfirmed(regionList):
+    layout = {"title": {"text": "Confirmed Cases"}}
 
-# Create traces
-trace0 = go.Scatter(
-    x = random_x,
-    y = random_y0,
-    mode = 'markers',
-    name = 'markers'
-)
+    traces = []
+    for region in regionList:
+        name = region['country']
+        if region['province'] != '*':
+            name = region['province']
+        
+        traces.append({"type": "scatter", "y": region['confirmed'], "name":name})
+    
+    fig = {}
+    fig['data'] = traces
+    fig['layout'] = layout
 
-trace1 = go.Scatter(
-    x = random_x,
-    y = random_y1,
-    mode = 'lines+markers',
-    name = 'lines+markers'
-)
+    pio.show(fig)
+    return
+        
 
-trace2 = go.Scatter(
-    x = random_x,
-    y = random_y2,
-    mode = 'lines',
-    name = 'lines'
-)
-
-data = [trace0, trace1, trace2]
-plotly.offline.plot(data, filename='scatter-mode')
+regionList = load_data.LoadRegionList()
+DrawConfirmed(regionList)
