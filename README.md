@@ -10,4 +10,5 @@ install plotly
 use submodule for raw_data which comes from John Hopkins repo:
 
 git submodule init
+
 git submodule update
