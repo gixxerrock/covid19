@@ -1,9 +1,10 @@
 import plotly.io as pio
 import load_data
+import analyze
 
 
-def DrawConfirmed(regionList):
-    layout = {"title": {"text": "Confirmed Cases"}}
+def PlotAttrib(regionList, attrib):
+    layout = {"title": {"text": attrib}}
 
     traces = []
     for region in regionList:
@@ -11,7 +12,7 @@ def DrawConfirmed(regionList):
         if region['province'] != '*':
             name = region['province']
         
-        traces.append({"type": "scatter", "y": region['confirmed'], "name":name})
+        traces.append({"type": "scatter", "y": region[attrib], "name":name})
     
     fig = {}
     fig['data'] = traces
@@ -21,5 +22,12 @@ def DrawConfirmed(regionList):
     return
         
 
+#pio.renderers.default = "firefox"
+
 regionList = load_data.LoadRegionList()
-DrawConfirmed(regionList)
+analyze.AnalyzeRegions(regionList)
+
+PlotAttrib(regionList, 'confirmed')
+PlotAttrib(regionList, 'confirmed_pm')
+PlotAttrib(regionList, 'deaths')
+PlotAttrib(regionList, 'deaths_pm')

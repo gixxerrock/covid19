@@ -1,5 +1,5 @@
 #reading raw data
-rawDataPath = "../raw_data/COVID-19/csse_covid_19_data/csse_covid_19_time_series/"
+rawDataPath = "../raw_data/csse_covid_19_data/csse_covid_19_time_series/"
 
 fn_confirmed = rawDataPath + "time_series_covid19_confirmed_global.csv"
 fn_deaths = rawDataPath + "time_series_covid19_deaths_global.csv"
@@ -39,7 +39,7 @@ def InitRegions():
         region = {}
         region['province'] = elems[0]
         region['country'] = elems[1]
-        region['population'] = elems[2]
+        region['population'] = int(elems[2])
 
         regionList.append(region)
         
