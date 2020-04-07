@@ -2,9 +2,14 @@ import plotly.io as pio
 import load_data
 import analyze
 
-
 def PlotAttrib(regionList, attrib):
-    layout = {"title": {"text": attrib}}
+    xAxisTitle = 'days since outbreak began'
+    yAxisScale = 'log'
+    
+    layout = {}
+    layout['title'] = {"text": attrib}
+    layout['xaxis'] = {'title_text': xAxisTitle}
+    layout['yaxis'] = {'type': yAxisScale}
 
     traces = []
     for region in regionList:
@@ -17,7 +22,7 @@ def PlotAttrib(regionList, attrib):
     fig = {}
     fig['data'] = traces
     fig['layout'] = layout
-
+    
     pio.show(fig)
     return
         
