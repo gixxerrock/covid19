@@ -4,7 +4,8 @@ import analyze
 
 def PlotAttrib(regionList, attrib):
     xAxisTitle = 'days since outbreak began'
-    yAxisScale = 'log'
+    #yAxisScale = 'log'
+    yAxisScale = 'linear'
     
     layout = {}
     layout['title'] = {"text": attrib}
