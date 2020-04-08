@@ -12,3 +12,6 @@ use submodule for raw_data which comes from John Hopkins repo:
 git submodule init raw_data
 
 git submodule update
+
+goto to raw_data
+git pull
